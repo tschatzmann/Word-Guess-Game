@@ -16,6 +16,7 @@
         <p id="losses-text"></p>
         <p id="missedLetters-text"></p>
     </div>
+    <main></main>
     <script type="text/javascript">
    
         // Creating variables to hold the number of wins, losses, and ties. They start at 0.
@@ -79,53 +80,51 @@
             console.log(userGuess + ' in guessesRemaining loop' )         
             console.log('beginning if statement ' + 'underScoreCount ' + underScoreCount + 'guessesRemaining ' + guessesRemaining)
             if (underScoreCount > 0){
-                Letterfound = 0; 
-                console.log(' letterFound' + Letterfound);
-                for ( var j = 0; j < song.length; j++){
+               var Letterfound = 0; 
+                console.log(' letterFound ' + Letterfound);
+                var position = song.indexOf(userGuess);
+                console.log('position of letter '+ position);
+                if(position >= 0){
+                    for ( var j = 0; j < song.length; j++){
                     console.log('in loop' + j)
                     if(song[j]===userGuess){
                         console.log('songj ' + song[j])
                         answerArray[j] = userGuess;
-                        underScoreCount--;
-                        console.log('underScount in j loop ' + underScoreCount);
-                        Letterfound = 1;
+                        Letterfound++;
                     }
+
                 }
-                console.log('after for loop letterFound  ' + Letterfound)
-                if(Letterfound = 0 ){
-                    guessesRemaining--;
+                alert("your song" + answerArray);
+                 underScoreCount = underScoreCount - Letterfound;
+                 console.log('underScount after j loop ' + underScoreCount + 'letterFound ' + Letterfound);
                 }
                 else{
-                    alert("your song" + answerArray);
-                    if(underScoreCount = 0){ 
-                        alert("you win");
-                        wins++;
-                        console.log(wins)
-                    }      
+                    guessesRemaining--;
                 }
- 
-            }
-
-            }
+                 
+                 //  if(underScoreCount = 0){ 
+                 //       alert("you win");
+                 //       wins++;
+                 //       console.log(wins)
+                   // }      
+                }
             else{
+                alert('game over')
+            }
+            
+        }
+        else{
             alert(" you lose");
             losses++;
             console.log(losses);
-            }
+            } 
             // Display the user and computer guesses, and wins/losses/ties.
             userGuess.textContent = "You chose: " + userGuess;
             songText.textContent = "The computer chose: " + song;
             winsText.textContent = "wins: " + wins;
             lossesText.textContent = "losses: " + losses;  
 
-        }  
-
-          
-            
- 
-
-
-    
+    }
     </script> 
 </body>
 </html>
