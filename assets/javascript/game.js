@@ -46,6 +46,13 @@
             
                               // Hide the directions
            directionsText.textContent = "";
+           function checkforWin(arr){
+            console.log('in function ' + arr)
+               if (arr = 0){
+                wins++;
+                console.log('wins ' + wins);
+               }
+           }
              //5 results
             //Comparison of 
             // a) Do we have letters remaining ( underscore Count >0)
@@ -79,79 +86,25 @@
                         alert("your song" + answerArray);
                          underScoreCount = underScoreCount - Letterfound;
                          console.log('underScount after j loop ' + underScoreCount + 'letterFound ' + Letterfound);
-                          if (underScoreCount <= 0){ 
-                            alert("you win");
-                            wins++;
-                            console.log(wins)
-                            }
+                         checkforWin(underScoreCount);
                         }
+
                         else{
                             guessesRemaining--;
                             missedLetters = missedLetters + ' ' + userGuess;
                             console.log('missedLetters ' + missedLetters)
                         }                          
-                        }else if(underScoreCount = 0){
-                            alert('you win');
-                            wins++;
-                            console.log('wins ' + wins)
-                        }
-                        else{
-                            alert('game over')
-                        }
-    
+                        }else {
+                            checkforWin(underScoreCount);
+                            }
+                               
                     } 
-                        else{
-                            alert(" you lose");
-                            losses++;
-                            console.log(losses);
-                        } 
-            }
-            if (guessesRemaining > 0){ 
-                console.log(userGuess + ' in guessesRemaining loop' )         
-                console.log('beginning if statement ' + 'underScoreCount ' + underScoreCount + 'guessesRemaining ' + guessesRemaining)
-                if (underScoreCount > 0){
-                   var Letterfound = 0; 
-                    console.log(' letterFound ' + Letterfound);
-                    var position = song.indexOf(userGuess);
-                    console.log('position of letter '+ position);
-                    if (position >= 0){
-                        for ( var j = 0; j < song.length; j++){
-                        console.log('in loop' + j)
-                        if(song[j]===userGuess){
-                            console.log('songj ' + song[j])
-                            answerArray[j] = userGuess;
-                            Letterfound++;
-                        }
-    
-                    }
-                    alert("your song" + answerArray);
-                     underScoreCount = underScoreCount - Letterfound;
-                     console.log('underScount after j loop ' + underScoreCount + 'letterFound ' + Letterfound);
-                      if (underScoreCount <= 0){ 
-                        alert("you win");
-                        wins++;
-                        console.log(wins)
-                        }
-                    }
-                    else{
-                        guessesRemaining--;
-                    }                          
-                    }else if(underScoreCount = 0){
-                        alert('you win');
-                        wins++;
-                        console.log('wins ' + wins)
-                    }
-                    else{
-                        alert('game over')
-                    }
-
-                } 
                     else{
                         alert(" you lose");
                         losses++;
                         console.log(losses);
                     } 
-                
+            }             
 
                 // Display the user and computer guesses, and wins/losses/ties.
                 userGuess.textContent = "You chose: " + userGuess;
@@ -160,3 +113,9 @@
                 lossesText.textContent = "losses: " + losses;  
     
         }
+
+function checkforWin() {
+    alert('you win');
+    wins++;
+    console.log('wins ' + wins);
+}
