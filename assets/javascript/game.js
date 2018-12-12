@@ -7,6 +7,7 @@ var underScoreCount = 0;
 var missedLetters = [];
 console.log('at set var underScoreCount ' + underScoreCount);
 var missedLetters = [];
+var LetterCount = 0;
 // BUild arrays
 //const songChoice = ["Summertime Sadness", "Summer Loving", "Indian Summer"];
 const songChoice = ["cats", "dog", "piggy"];
@@ -55,8 +56,8 @@ document.onkeyup = function (event) {
     // c) Determine position of userGuess
     // var checkLetter = Str.includes(userGuess)
     // console.log(checkLetter)
-    var usedPosition = UsedLetter(userGuess);
-    if (usedPosition >= 0) {
+ //   var usedPosition = IsUsedLetter(userGuess);
+    if (IsUsedLetter(userGuess) >= 0) {
         alert('You have already used letter ' + userGuess);
     }
     else {
@@ -64,7 +65,7 @@ document.onkeyup = function (event) {
             console.log(userGuess + ' in guessesRemaining loop')
             console.log('beginning if statement ' + 'underScoreCount ' + underScoreCount + 'guessesRemaining ' + guessesRemaining)
             if (underScoreCount > 0) {
-                var {position} = IsFound(userGuess);
+                var position = IsFound(userGuess);
                 if (position >= 0) {
                     for (var j = 0; j < song.length; j++) {
                         console.log('in loop' + j)
@@ -94,14 +95,15 @@ document.onkeyup = function (event) {
 
 
     function IsFound(userGuess) {
-        var LetterCount = 0;
-        var position = song.indexOf(userGuess);
+       position = song.indexOf(userGuess);
         console.log('position of letter ' + position);
         return { position};
     }
 
-    function UsedLetter(userGuess) {
+    function IsUsedLetter(userGuess) {
+        console.log(missedLetters);
         return missedLetters.indexOf(userGuess);
+
     }
 
     function IsLoss(guessesRemaining) {
@@ -126,7 +128,7 @@ document.onkeyup = function (event) {
     }
 
     function LocateLetters(j, userGuess, LetterCount) {
-        if (song[j] === userGuess) {
+        if (song[j] == userGuess) {
             console.log('songj ' + song[j]);
             answerArray[j] = userGuess;
             LetterCount++;
@@ -136,7 +138,7 @@ document.onkeyup = function (event) {
 
     function IsWin(underScoreCount) {
         console.log('in function ' + underScoreCount);
-        if (underScoreCount = 0) {
+        if (underScoreCount == 0) {
             wins++;
             console.log('wins ' + wins);
         }
