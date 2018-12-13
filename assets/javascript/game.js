@@ -19,6 +19,7 @@ var userGuessText = document.getElementById("userGuess-text");
 var songText = document.getElementById("songchoice-text");
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
+var alreadyGuessed = document.getElementById("alreadyGuessed-text");
 
 
 var rando = Math.floor(Math.random() * songChoice.length - 1);
@@ -32,7 +33,7 @@ console.log("underSCoreCount " + underScoreCount);
 var answerArray = [];
 ///convert underscore:
 for (i = 0; i < underScoreCount; i++) {
-    answerArray[i] = " __ ";
+    answerArray.push("___");
 }
 console.log(answerArray);
 songText.textContent = "The computer chose: " + song;
@@ -91,6 +92,7 @@ document.onkeyup = function (event) {
         songText.textContent = "The computer chose: " + song;
         winsText.textContent = "wins: " + wins;
         lossesText.textContent = "losses: " + losses;
+        alreadyGuessed.textContent = "Already Guessed" + missedLetters;
 }
 
 
@@ -130,7 +132,7 @@ document.onkeyup = function (event) {
 
     function LocateLetters(j, userGuess, LetterCount) {
         if (song[j] == userGuess) {
-            console.log('songj ' + song[j]);
+            console.log('songj ' + song[j]); 
             answerArray[j] = userGuess;
             console.log(answerArray)
             LetterCount++;
