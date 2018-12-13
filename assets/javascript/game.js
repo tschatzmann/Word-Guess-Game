@@ -67,6 +67,7 @@ document.onkeyup = function (event) {
             if (underScoreCount > 0) {
                 var position = IsFound(userGuess);
                 if (position >= 0) {
+                    LetterCount = 0;
                     for (var j = 0; j < song.length; j++) {
                         console.log('in loop' + j)
                         LetterCount = LocateLetters(j, userGuess, LetterCount);
@@ -97,7 +98,7 @@ document.onkeyup = function (event) {
     function IsFound(userGuess) {
        position = song.indexOf(userGuess);
         console.log('position of letter ' + position);
-        return { position};
+        return (position);
     }
 
     function IsUsedLetter(userGuess) {
@@ -123,7 +124,7 @@ document.onkeyup = function (event) {
     function IsUnderScoureCount(LetterCount){
         alert("your song" + answerArray);
         underScoreCount = underScoreCount - LetterCount;
-        console.log('underScount after j loop ' + underScoreCount + 'letterFound ' + Letterfound);
+        console.log('underScount after j loop ' + underScoreCount + 'letterCount ' + LetterCount);
         IsWin(underScoreCount);
     }
 
@@ -131,6 +132,7 @@ document.onkeyup = function (event) {
         if (song[j] == userGuess) {
             console.log('songj ' + song[j]);
             answerArray[j] = userGuess;
+            console.log(answerArray)
             LetterCount++;
         }
         return LetterCount;
