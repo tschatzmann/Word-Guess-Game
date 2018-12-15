@@ -6,7 +6,6 @@ var guessesRemaining = 6;
 var underScoreCount = 0;
 var missedLetters = [];
 console.log('at set var underScoreCount ' + underScoreCount);
-var missedLetters = [];
 var LetterCount = 0;
 // BUild arrays
 //const songChoice = ["Summertime Sadness", "Summer Loving", "Indian Summer"];
@@ -27,13 +26,16 @@ console.log(rando);
 console.log("songCholcelength " + songChoice.length);
 var song = songChoice[rando];
 console.log(song);
-str = song;
-var underScoreCount = str.length;
+// str = song;
+// var underScoreCount = str.length;
+// var underScoreCount = song.length;
+console.log(song.length)
 console.log("underSCoreCount " + underScoreCount);
 var answerArray = [];
 ///convert underscore:
 for (i = 0; i < underScoreCount; i++) {
-    answerArray.push("___");
+    answerArray.push("___"); // array
+    answerArray[i] = "-____ ,"  // string
 }
 console.log(answerArray);
 songText.textContent = "The computer chose: " + song;
@@ -80,7 +82,7 @@ document.onkeyup = function (event) {
                 }
             } 
             else {
-                IsWin(underScoreCount);
+                IsWin();
             }
         }
         else {
@@ -109,7 +111,8 @@ document.onkeyup = function (event) {
 
     }
 
-    function IsLoss(guessesRemaining) {
+    function IsLoss() {
+        
         if(guessesRemaining = 0){
             alert(" you lose");
             losses++;
@@ -117,20 +120,20 @@ document.onkeyup = function (event) {
         }
     }
 
-    function WrongGuess(userGuess) {
+    function WrongGuess() {
         guessesRemaining--;
         missedLetters = missedLetters + ' ' + userGuess;
         console.log('missedLetters ' + missedLetters);
     }
 
-    function IsUnderScoureCount(LetterCount){
+    function IsUnderScoureCount(){
         alert("your song" + answerArray);
         underScoreCount = underScoreCount - LetterCount;
         console.log('underScount after j loop ' + underScoreCount + 'letterCount ' + LetterCount);
         IsWin(underScoreCount);
     }
 
-    function LocateLetters(j, userGuess, LetterCount) {
+    function LocateLetters(j, userGuess) {
         if (song[j] == userGuess) {
             console.log('songj ' + song[j]); 
             answerArray[j] = userGuess;
