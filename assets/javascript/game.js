@@ -35,7 +35,7 @@ var answerArray = [];
 ///convert underscore:
 for (i = 0; i < underScoreCount; i++) {
     answerArray.push("___"); // array
-    answerArray[i] = "-____ ,"  // string
+  //  answerArray[i] = "-____ ,"  // string
 }
 console.log(answerArray);
 songText.textContent = "The computer chose: " + song;
@@ -73,7 +73,7 @@ document.onkeyup = function (event) {
                     LetterCount = 0;
                     for (var j = 0; j < song.length; j++) {
                         console.log('in loop' + j)
-                        LetterCount = LocateLetters(j, userGuess, LetterCount);
+                        LetterCount = LocateLetters(j, userGuess);
                     }
                     IsUnderScoureCount(LetterCount);
                 }
@@ -82,11 +82,11 @@ document.onkeyup = function (event) {
                 }
             } 
             else {
-                IsWin();
+                IsWin(underScoreCount);
             }
         }
         else {
-            IsLoss();
+            IsLoss(guessesRemaining);
         }
     }
         // Display the user and computer guesses, and wins/losses/ties.
